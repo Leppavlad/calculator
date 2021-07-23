@@ -5,12 +5,15 @@ import "./index.css";
 import "./App.css";
 
 import { LangProvider } from "./features/context/language";
+import { ThemeProvider } from "./features/context/theme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <LangProvider>
-      <App />
-    </LangProvider>
+    <ThemeProvider>
+      <LangProvider>
+        <App />
+      </LangProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

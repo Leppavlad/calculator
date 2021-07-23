@@ -1,17 +1,16 @@
 import { createContext } from "react";
-import { dictionaries, languageOptions, getUserLang } from "../locale";
+import { dictionaries, getUserLang } from "../locale";
 
 import WithContext from "./WithContext";
 
+const category = "language";
 const defaultOption =
-  window.localStorage.getItem("language") ||
-  getUserLang().split("-")[0] ||
-  "en";
-const LangSettings = {
-  category: "language",
+  window.localStorage.getItem(category) || getUserLang().split("-")[0] || "en";
+
+const initialSettings = {
+  category,
   active: defaultOption,
   activeDataset: dictionaries[defaultOption],
-  options: languageOptions,
 };
 
 export const LangContext = createContext();
@@ -20,5 +19,5 @@ export const LangConsumer = LangContext.Consumer;
 export const LangProvider = WithContext(
   LangContext,
   dictionaries,
-  LangSettings
+  initialSettings
 );
