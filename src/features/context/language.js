@@ -13,8 +13,7 @@ const LangSettings = {
 export const LangContext = createContext(LangSettings);
 export const LangConsumer = LangContext.Consumer;
 
-export const LangProvider = WithContext(
-  LangContext,
-  dictionaries,
-  LangSettings
-);
+export const LangProvider = WithContext(LangContext, dictionaries, {
+  ...LangSettings,
+  category: "language",
+});

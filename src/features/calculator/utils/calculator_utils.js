@@ -1,24 +1,3 @@
-export const unitTypes = {
-  c: {
-    ru: "Цельсий",
-    en: "Celsius",
-    ua: "Украинский Цельсий",
-    kz: "Казахский Цельсий",
-  },
-  f: {
-    ru: "Фаренгейт",
-    en: "Fahrenheit",
-    ua: "Украинский Фаренгейт",
-    kz: "Казахский Фаренгейт",
-  },
-  k: {
-    ru: "Кельвин",
-    en: "Kelvin",
-    ua: "Украинский Кельвин",
-    kz: "Казахский Кельвин",
-  },
-};
-
 export const unitConversion = {
   c: {
     f: (value) => +value * 1.8 + 32,
