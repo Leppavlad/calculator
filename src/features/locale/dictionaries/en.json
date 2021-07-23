@@ -1,0 +1,6 @@
+{
+  "header__title": "Calculator",
+  "calculator__unit__c": "Celsius",
+  "calculator__unit__f": "Fahrenheit",
+  "calculator__unit__k": "Kelvin"
+}
