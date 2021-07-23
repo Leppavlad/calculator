@@ -5,28 +5,27 @@ const WithContext = (ContextComponent, contextDataset, initialState) =>
     constructor(props) {
       super(props);
       this.state = {
-        active: initialState.active,
-        activeDataset: initialState.activeDataset,
+        active:
+          window.localStorage.getItem(initialState.category) ||
+          initialState.active,
+        activeDataset:
+          contextDataset[window.localStorage.getItem(initialState.category)] ||
+          initialState.activeDataset,
       };
     }
     setActive = (active) => {
-      const { category } = initialState;
-      window.localStorage.setItem(category, active);
+      window.localStorage.setItem(initialState.category, active);
       this.setState({ active, activeDataset: contextDataset[active] });
     };
     render() {
       const { Provider } = ContextComponent;
-      const { active, activeDataset } = this.state;
-      const activeState =
-        window.localStorage.getItem(initialState.category) || active;
+      const active =
+        window.localStorage.getItem(initialState.category) || this.state.active;
+      const activeDataset =
+        contextDataset[window.localStorage.getItem(initialState.category)] ||
+        initialState.activeDataset;
       return (
-        <Provider
-          value={{
-            active: activeState,
-            activeDataset,
-            setActive: this.setActive,
-          }}
-        >
+        <Provider value={{ active, activeDataset, setActive: this.setActive }}>
           {this.props.children}
         </Provider>
       );
